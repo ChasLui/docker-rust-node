@@ -16,6 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set lowercase owner name
+        run: |
+          echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -36,4 +40,4 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository_owner }}/docker-rust-node:latest    
+            ghcr.io/${{ env.OWNER_LC }}/docker-rust-node:latest    
