@@ -5,6 +5,8 @@ RUN apt-get update && \
     apt-get install -y curl build-essential openssl libssl3 pkg-config zip unzip libsqlite3-dev && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     . $HOME/.cargo/env && \
+    # 使用rustup安装指定组件
+    rustup component add cargo clippy rust-docs rust-std rustc rustfmt && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 # 安装yarn4
