@@ -7,6 +7,11 @@ RUN apt-get update && \
     . $HOME/.cargo/env && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+# 安装yarn4
+RUN npm install -g corepack
+RUN corepack enable
+RUN corepack prepare yarn@stable --activate
+RUN npm install -g node-gyp @electron/node-gyp
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 ENV CARGO_HOME="/root/.cargo"
