@@ -2,7 +2,7 @@
 FROM node:22-bookworm-slim AS base
 # 安装 Rust openssl 等基础依赖
 RUN apt-get update && \
-    apt-get install -y curl build-essential openssl libssl3 pkg-config zip unzip libsqlite3-dev && \
+    apt-get install -y curl build-essential openssl libssl3 pkg-config zip unzip libsqlite3-dev git && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
     . $HOME/.cargo/env && \
     # 使用rustup安装指定组件
